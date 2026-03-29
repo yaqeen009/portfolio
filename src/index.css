@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import "tailwindcss";
+
+/* =========================
+   THEME (THIS IS THE NEW CONFIG)
+========================= */
+@theme {
+  /* Colors (Monochrome system) */
+
+  --color-background: oklch(0.04 0 0);   /* near black */
+  --color-foreground: oklch(0.95 0 0);   /* soft white */
+
+  --color-primary: oklch(1 0 0);         /* white */
+  --color-primary-foreground: oklch(0.05 0 0);
+
+  --color-secondary: oklch(0.12 0 0);
+  --color-secondary-foreground: oklch(0.9 0 0);
+
+  --color-muted: oklch(0.14 0 0);
+  --color-muted-foreground: oklch(0.65 0 0);
+
+  --color-accent: oklch(0.2 0 0);
+  --color-accent-foreground: oklch(0.95 0 0);
+
+  --color-border: oklch(0.2 0 0);
+
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Fonts */
+  --font-monserrat: "Montserrat", sans-serif; 
+  --font-roboto: "Roboto Slab", serif;
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-monserrat);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-monserrat);
+  }
+  .font-monserrat {
+    font-family: var(--font-monserrat);
+  }
+  .font-roboto {
+    font-family: var(--font-roboto);
+  }
+}
