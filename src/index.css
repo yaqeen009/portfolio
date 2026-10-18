@@ -1,61 +1,288 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
-@import "tailwindcss";
+/* Tailwind is told exactly where to look. Automatic content detection would
+   also scan the Markdown design notes at the repository root and emit the
+   utility classes quoted inside them. */
+@import "tailwindcss" source(none);
+@source "../index.html";
+@source "./";
 
-/* =========================
-   THEME (THIS IS THE NEW CONFIG)
-========================= */
+/* ============================================================================
+   DESIGN SYSTEM — "Survey"
+   A measured, instrument-like system: hairline structure, one accent, type
+   carrying the identity. Three token layers below:
+     1. PRIMITIVES  — raw values, no meaning attached
+     2. SEMANTIC    — purpose aliases the components consume
+     3. MOTION      — durations and easings reused by CSS and JS
+   ============================================================================ */
+
+/* ---------------------------------------------------------------------------
+   1. PRIMITIVES
+   --------------------------------------------------------------------------- */
 @theme {
-  /* Colors (Monochrome system) */
+  /* Neutral ramp — warm graphite, deliberately not blue-slate */
+  --color-ink-1000: #08090a;
+  --color-ink-900: #0b0c0d;
+  --color-ink-800: #101213;
+  --color-ink-700: #16181a;
+  --color-ink-600: #1d2022;
+  --color-ink-500: #272b2d;
+  --color-ash-600: #565d60;
+  --color-ash-500: #767d80;
+  --color-ash-400: #969da0;
+  --color-ash-300: #b9c0c2;
+  --color-paper: #eceeeb;
 
-  --color-background: oklch(0.04 0 0);   /* near black */
-  --color-foreground: oklch(0.95 0 0);   /* soft white */
+  /* Single accent. Nothing else in the palette is allowed to be chromatic. */
+  --color-signal-500: #2fbf99;
+  --color-signal-400: #6fe0be;
+  --color-signal-300: #a9efd8;
 
-  --color-primary: oklch(1 0 0);         /* white */
-  --color-primary-foreground: oklch(0.05 0 0);
+  /* Typeface roles */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-secondary: oklch(0.12 0 0);
-  --color-secondary-foreground: oklch(0.9 0 0);
+  /* Radii — near-square, technical */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 5px;
 
-  --color-muted: oklch(0.14 0 0);
-  --color-muted-foreground: oklch(0.65 0 0);
+  /* Easings */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  --color-accent: oklch(0.2 0 0);
-  --color-accent-foreground: oklch(0.95 0 0);
-
-  --color-border: oklch(0.2 0 0);
-
-  /* Radius */
-  --radius: 0.75rem;
-
-  /* Fonts */
-  --font-monserrat: "Montserrat", sans-serif; 
-  --font-roboto: "Roboto Slab", serif;
+  /* Motion durations */
+  --duration-instant: 120ms;
+  --duration-quick: 220ms;
+  --duration-base: 360ms;
+  --duration-slow: 620ms;
 }
 
-/* =========================
-   BASE STYLES
-========================= */
+/* ---------------------------------------------------------------------------
+   2. SEMANTIC
+   Components only ever reference these, never the primitives directly.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-bg: var(--color-ink-900);
+  --color-bg-raised: var(--color-ink-800);
+  --color-panel: var(--color-ink-700);
+  --color-line: #ffffff17;
+  --color-line-strong: #ffffff2b;
+  --color-text: var(--color-paper);
+  --color-text-muted: var(--color-ash-400);
+  --color-text-faint: var(--color-ash-500);
+  --color-accent: var(--color-signal-400);
+  --color-accent-deep: var(--color-signal-500);
+  --color-on-accent: var(--color-ink-1000);
+
+  /* Layout */
+  --spacing-rail: 5.5rem;
+  --width-measure: 62ch;
+}
+
+/* ---------------------------------------------------------------------------
+   3. BASE
+   --------------------------------------------------------------------------- */
 @layer base {
+  :root {
+    color-scheme: dark;
+    --reveal-distance: 14px;
+    --reveal-delay: 0ms;
+  }
+
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
   }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-monserrat);
     margin: 0;
-    padding: 0;
     min-height: 100vh;
-    box-sizing: border-box;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-monserrat);
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    text-wrap: balance;
+    margin: 0;
   }
-  .font-monserrat {
-    font-family: var(--font-monserrat);
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
   }
-  .font-roboto {
-    font-family: var(--font-roboto);
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  /* Keep interactive text legible when the pointer has no hover (touch) */
+  @media (hover: none) {
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   4. COMPONENT / UTILITY LAYER
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* Skip link — first tab stop */
+  .skip-link {
+    position: fixed;
+    top: 0;
+    left: 1.5rem;
+    z-index: 90;
+    translate: 0 -150%;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: translate var(--duration-quick) var(--ease-out-quint);
+  }
+
+  .skip-link:focus-visible {
+    translate: 0 0;
+  }
+
+  /* Mono annotation: used for real data only (indices, counts, labels) */
+  .annot {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+  }
+
+  /* Hairline rule that reads as structure, not decoration */
+  .rule {
+    height: 1px;
+    background: var(--color-line);
+  }
+
+  /* Underline that grows from the left on hover — information, not spectacle */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size var(--duration-quick) var(--ease-out-quint);
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   5. MOTION
+   Every animation here answers a load or a scroll, runs once, and collapses
+   to the final state under `prefers-reduced-motion`.
+   --------------------------------------------------------------------------- */
+@layer utilities {
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, var(--reveal-distance), 0);
+    transition:
+      opacity var(--duration-slow) var(--ease-out-quint),
+      transform var(--duration-slow) var(--ease-out-quint);
+    transition-delay: var(--reveal-delay);
+    will-change: opacity, transform;
+  }
+
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  [data-enter] {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    animation: enter var(--duration-slow) var(--ease-out-quint) forwards;
+    animation-delay: var(--enter-delay, 0ms);
+  }
+
+  @keyframes enter {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes signal-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  .signal-pulse {
+    animation: signal-pulse 2.4s var(--ease-in-out-quart) infinite;
+  }
+
+  /* Field grid: an actual coordinate system behind the hero, not a wash */
+  .field-grid {
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    [data-reveal],
+    [data-reveal="shown"],
+    [data-enter] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      animation: none;
+    }
+
+    .signal-pulse {
+      animation: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
