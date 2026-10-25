@@ -17,13 +17,13 @@ export default function Hero() {
     >
       {/* Spatial field — decorative, so it is hidden from assistive tech. */}
       <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[52%] md:block" aria-hidden="true">
-        <div className="field-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(115%_85%_at_72%_42%,#000_28%,transparent_70%)]" />
-        <SpatialField className="absolute inset-0 h-full w-full [mask-image:radial-gradient(115%_90%_at_70%_45%,#000_22%,transparent_68%)]" />
+        <div className="field-grid absolute inset-0 opacity-60 mask-[radial-gradient(115%_85%_at_72%_42%,#000_28%,transparent_70%)]" />
+        <SpatialField className="absolute inset-0 h-full w-full mask-[radial-gradient(115%_90%_at_70%_45%,#000_22%,transparent_68%)]" />
         {/* Scrim: the field fades out where it would sit behind body copy. */}
-        <div className="absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-bg via-bg/80 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-2/5 bg-linear-to-r from-bg via-bg/80 to-transparent" />
       </div>
 
-      <div className="relative mx-auto flex w-full max-w-[1320px] flex-col justify-center px-6 py-24 md:min-h-[92svh] md:px-10 md:py-32 lg:px-12">
+      <div className="relative mx-auto flex w-full max-w-330 flex-col justify-center px-6 py-24 md:min-h-[92svh] md:px-10 md:py-32 lg:px-12">
         <p data-enter style={{ "--enter-delay": "0ms" } as CSSProperties} className="annot">
           {site.role} · {site.location}
         </p>

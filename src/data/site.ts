@@ -47,13 +47,21 @@ export const site = {
     "Computer Science graduate with a Mathematical Sciences background and an academic specialisation in Computer Science with Statistics. I build full-stack products with React, TypeScript and Node, and work on the side of interactive technology where software meets space: XR, HCI and immersive data visualisation.",
   email: "yaqeenwunzaligu@gmail.com",
   links: {
-    github: { label: "GitHub", href: "https://github.com/yaqeen009", verified: true },
+    github: {
+      label: "GitHub",
+      href: "https://github.com/yaqeen009",
+      verified: true,
+    },
     linkedin: {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/yaqeen-wunzaligu-47a545239/",
       verified: true,
     },
-    email: { label: "Email", href: "mailto:yaqeenwunzaligu@gmail.com", verified: true },
+    email: {
+      label: "Email",
+      href: "mailto:yaqeenwunzaligu@gmail.com",
+      verified: true,
+    },
   } satisfies Record<string, Link>,
 } as const;
 
@@ -78,8 +86,7 @@ export const projects: Project[] = [
       "Front-end and full-stack work on the quotation and underwriting flows.",
     stack: ["React", "TypeScript", "Node.js", "Postgres", "Tailwind CSS"],
     status: "Private project",
-    note:
-      "The repository is private and no customer data can be shown. Details on this page are limited to what can be shared publicly.",
+    note: "The repository is private and no customer data can be shown. Details on this page are limited to what can be shared publicly.",
     links: [],
     layout: "feature",
   },
@@ -95,8 +102,7 @@ export const projects: Project[] = [
       "Modelled the environment in Blender, assembled and scripted the experience in Unity with C#, and produced the VR walkthrough demonstration.",
     stack: ["Unity", "Blender", "C#", "XR tooling", "Meta Quest"],
     status: "Completed academic project with demonstration build",
-    note:
-      "The published repository contains project metadata only, so the demonstration video is the primary evidence of the work.",
+    note: "The published repository contains project metadata only, so the demonstration video is the primary evidence of the work.",
     links: [
       {
         label: "Watch the walkthrough",
@@ -112,60 +118,113 @@ export const projects: Project[] = [
     layout: "wide",
   },
   {
-    id: "json-buddy",
+    id: "data-space",
     index: "03",
-    name: "JSON Buddy",
-    summary: "A JSON formatter, validator and tree viewer that runs entirely in the browser.",
+    name: "DataSpace",
+    summary:
+      "A platform for exploring and visualizing data in a 3D environment.",
     purpose:
-      "Inspect and repair JSON without sending anything to a server. Everything is parsed locally, which matters when the payload is not something you want to paste into a third-party service.",
-    contribution: "Designed and built the application end to end in TypeScript and React.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+      "UbiquitousGuide is an interactive data exploration platform that transforms complex datasets into immersive, connected visual experiences. Featuring 3D visualizations, interactive charts, and linked data views, it helps users uncover patterns, explore relationships, and understand multidimensional data more intuitively.",
+    contribution:
+      "Designed and built the application end to end in TypeScript and React.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "Three.js","Zustand"],
     status: "Live",
     links: [
-      { label: "Open the app", href: "https://json-buddy-five.vercel.app", verified: true },
-      { label: "Source", href: "https://github.com/yaqeen009/json-buddy", verified: true },
+      {
+        label: "Open the app",
+        href: "https://uguide-data-space.vercel.app",
+        verified: true,
+      },
+      {
+        label: "Source",
+        href: "https://github.com/yaqeen009/ubiquitous-guide``",
+        verified: true,
+      },
     ],
     layout: "compact",
   },
   {
-    id: "agrilink",
+    id: "spend-scope",
     index: "04",
     name: "SpendScope",
     summary: "A privacy-first personal finance analytics tool.",
     purpose:
       "Import a CSV from your bank, categorise your spending, set budgets, and explore your trends over time. All data is stored in your browser and never sent to a server, so you can use the tool without worrying about your financial data being exposed.",
-    contribution: "Built the front end in React and TypeScript, and the backend in TypeScript with Express.",
-    stack: ["React", "TypeScript", "Express", "Postgres", "Neon", "Tailwind CSS","Prisma"],
+    contribution:
+      "Built the front end in React and TypeScript, and the backend in TypeScript with Express.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Express",
+      "Postgres",
+      "Neon",
+      "Tailwind CSS",
+      "Prisma",
+    ],
     status: "Live",
     links: [
-       { label: "Open the app", href: "https://my-spend-scope.vercel.app", verified: true },
-      { label: "Source", href: "https://github.com/yaqeen009/SpendScope", verified: true },
-     
+      {
+        label: "Open the app",
+        href: "https://my-spend-scope.vercel.app",
+        verified: true,
+      },
+      {
+        label: "Source",
+        href: "https://github.com/yaqeen009/SpendScope",
+        verified: true,
+      },
     ],
     layout: "compact",
   },
   {
-    id: "minilang",
+    id: "json-buddy",
     index: "05",
-    name: "MiniLang",
-    summary: "A small compiler for an arbitrary language, compiling to LLVM IR.",
+    name: "JSON Buddy",
+    summary:
+      "A JSON formatter, validator and tree viewer that runs entirely in the browser.",
     purpose:
-      "A compiler project to work through the parts of computer science that closest-fit a statistics-adjacent degree: formal grammars, intermediate representation and code generation.",
-    contribution: "Wrote the lexer, parser and LLVM code generation in Python.",
-    stack: ["Python", "LLVM"],
-    status: "Public source",
+      "Inspect and repair JSON without sending anything to a server. Everything is parsed locally, which matters when the payload is not something you want to paste into a third-party service.",
+    contribution:
+      "Designed and built the application end to end in TypeScript and React.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    status: "Live",
     links: [
-      { label: "Source", href: "https://github.com/yaqeen009/MiniLang", verified: true },
+      {
+        label: "Open the app",
+        href: "https://json-buddy-five.vercel.app",
+        verified: true,
+      },
+      {
+        label: "Source",
+        href: "https://github.com/yaqeen009/json-buddy",
+        verified: true,
+      },
     ],
     layout: "compact",
   },
 ];
 
 export const archive: Link[] = [
-  { label: "Spotify client — TypeScript, Clerk, Express, MongoDB", href: "https://github.com/yaqeen009/Spotify-Clone", verified: true },
-  { label: "E-commerce front end — React, Redux, Vite, Tailwind", href: "https://github.com/yaqeen009/Ecommerce-FrontEnd", verified: true },
-  { label: "HCI semester project — React, Tailwind", href: "https://github.com/yaqeen009/DCIT302-Semester-Project", verified: true },
-  { label: "Node CLI file manager — JavaScript", href: "https://github.com/yaqeen009/node-cli-file-manager", verified: true },
+  {
+    label: "Spotify client — TypeScript, Clerk, Express, MongoDB",
+    href: "https://github.com/yaqeen009/Spotify-Clone",
+    verified: true,
+  },
+  {
+    label: "E-commerce front end — React, Redux, Vite, Tailwind",
+    href: "https://github.com/yaqeen009/Ecommerce-FrontEnd",
+    verified: true,
+  },
+  {
+    label: "HCI semester project — React, Tailwind",
+    href: "https://github.com/yaqeen009/DCIT302-Semester-Project",
+    verified: true,
+  },
+  {
+    label: "Node CLI file manager — JavaScript",
+    href: "https://github.com/yaqeen009/node-cli-file-manager",
+    verified: true,
+  },
 ];
 
 export const capabilities = [

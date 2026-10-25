@@ -81,7 +81,7 @@ export default function RailNav() {
           <span className="mt-2 hidden font-mono text-[0.6875rem] leading-relaxed tracking-[0.14em] text-text-faint uppercase lg:block">
             Yaqeen
             <br />
-            Wunzaligu
+            Wunzalgu
           </span>
           <span className="sr-only">{site.name} — back to top</span>
         </a>

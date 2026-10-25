@@ -21,10 +21,10 @@ function StatusFlag({ status }: { status: string }) {
 function Plate({ id, ratio }: { id: string; ratio: string }) {
   return (
     <div
-      className={`relative overflow-hidden border border-line bg-bg-raised transition-colors duration-[var(--duration-base)] ease-[var(--ease-out-quint)] group-hover:border-line-strong ${ratio}`}
+      className={`relative overflow-hidden border border-line bg-bg-raised transition-colors duration-(--duration-base) ease-out-quint group-hover:border-line-strong ${ratio}`}
     >
       <div className="field-grid absolute inset-0 opacity-40" aria-hidden="true" />
-      <div className="absolute inset-0 flex items-center justify-center p-8 transition-transform duration-[var(--duration-base)] ease-[var(--ease-out-quint)] group-hover:-translate-y-1">
+      <div className="absolute inset-0 flex items-center justify-center p-8 transition-transform duration-(--duration-base) ease-out-quint group-hover:-translate-y-1">
         <ProjectFigure id={id} className="h-full w-full" />
       </div>
     </div>
